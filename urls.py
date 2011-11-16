@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'ofDoc.views.home', name='home'),
+    url(r'^$', 'cppdoc.views.listClasses', name='index'),
     # url(r'^ofDoc/', include('ofDoc.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
