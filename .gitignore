@@ -1,0 +1,5 @@
+ofSource/
+*.pyc
+doxygen/build/
+*~
+settings.py
