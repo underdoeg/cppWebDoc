@@ -1,8 +1,6 @@
 #this is based on https://github.com/arturoc/new-OF-site/blob/master/_tools/docs_update.py
-
 from django.core.management.base import BaseCommand, CommandError
 from cppdoc.models import *
-from configobj import ConfigObj
 import os.path
 from lxml import etree
 from lxml import objectify
@@ -24,6 +22,7 @@ def getAccess(name):
     return typeInst
 
 def serialize_class(filename):
+    
     xml = objectify.parse(filename)
     doxygen = xml.getroot()
 
