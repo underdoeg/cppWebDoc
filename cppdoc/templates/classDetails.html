@@ -1,0 +1,6 @@
+{% if functions %}
+    <h1>{{activeClass.name}}</h1>
+    {% for function in functions %}
+        <a href="/class/{{activeClass.name}}/f/{{ function.name }}" class="{% if activeFunction.name == function.name %}active{% endif %}">{{ function.name }}</a><br />
+    {% endfor %}
+{% endif %}

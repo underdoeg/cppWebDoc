@@ -1,11 +1,6 @@
-{% extends "base.html" %}
-
-{% block content %}
-<div class="section" >
 {% if classes %}
+    <h1>classes</h1>
     {% for class in classes %}
-        {{ class }}<br />
+        <a href="/class/{{ class.name }}" class="{% if activeClass.name == class.name %}active{% endif %}">{{ class.name }}</a><br />
     {% endfor %}
 {% endif %}
-</div>
-{% endblock %}

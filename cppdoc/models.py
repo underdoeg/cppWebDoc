@@ -20,6 +20,8 @@ class dClass(models.Model):
     class Meta:
         verbose_name = "Class"
         verbose_name_plural = "Classes"
+        ordering = ['name']
+
     
     def __unicode__(self):
         return self.name
@@ -64,6 +66,8 @@ class dFunction(dFunctionBase):
     class Meta:
         verbose_name = "Function"
         verbose_name_plural = "Functions"
+        ordering = ['name']
+
 
 class dVariableBase(models.Model):
     typeRef = models.ForeignKey(dType, blank=True, null=True)
@@ -73,6 +77,8 @@ class dVariableBase(models.Model):
         verbose_name = "Variable"
         verbose_name_plural = "Variables"
         abstract = True
+        ordering = ['name']
+
         
 class dClassVariable(dVariableBase):
     classRef = models.ForeignKey(dClass)
@@ -100,7 +106,7 @@ class dClassFunction(dFunctionBase):
         return str(self.classRef)+"::"+self.name+"()"
 
 class dFunctionParamSet(models.Model):
-    functionRef = models.ForeignKey(dFunctionBase)
+    functionRef = models.ForeignKey(dFunctionBase, related_name="paramSets")
     returnType = models.ForeignKey(dType)
     returnDescription = models.CharField(blank=True, max_length=1024)
     description = models.CharField(blank=True, max_length=1024)

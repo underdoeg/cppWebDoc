@@ -8,7 +8,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'cppdoc.views.listClasses', name='index'),
-    # url(r'^ofDoc/', include('ofDoc.foo.urls')),
+    url(r'^class/(?P<classname>[\w\-]+)/$', 'cppdoc.views.classDetails'),
+    url(r'^class/(?P<classname>[\w\-]+)/f/(?P<functionname>[\w\-]+)/$', 'cppdoc.views.classFunctionDetail'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

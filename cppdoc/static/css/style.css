@@ -2,10 +2,43 @@ html, body{
     font-size: 13px;
     margin: 0px;
     padding: 0px;
+    height: 100%;
+    font-family: 'Ubuntu Mono', monospace;
 }
 
-.section{
+a{
+    text-decoration: none;
+    color: #666;
+}
+
+a.active{
+    color: #000;
+    text-decoration: underline;
+}
+
+.col{
     width: 250px;
     float: left;
-    padding: 5px;
+    height: 100%;
 }
+
+.col .viewport{
+    padding: 5px;
+    line-height: 17px;
+}
+
+.col h1{
+    font-size: 15px;
+    margin: 0px;
+    padding: 0px;
+    padding-bottom: 10px;
+}
+
+/* Tiny Scrollbar */
+.col .viewport { width: 230px; height: 100%; overflow: hidden; position: relative; margin: 0px;padding: 0px;}
+.col .overview { list-style: none; position: absolute; left: 0; top: 0; padding: 10px; margin: 0; }
+.col .scrollbar{  position: relative; background-position: 0 0; float: right; width: 5px; }
+.col .track { height: 100%; width:13px; position: relative; padding: 0 1px; }
+.col .thumb { background-color: #eee; height: 20px; width: 5px; cursor: pointer; overflow: hidden; position: absolute; top: 0; left: 0px; }
+.col .thumb .end { overflow: hidden; height: 5px; width: 25px; }
+.col .disable { display: none; }

@@ -1,11 +1,45 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us" >
     <head>
+        <title>{%block title %}{% endblock %}</title>
+        <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css' />
+        <link rel="stylesheet" href="{{STATIC_URL}}css/style.css" type="text/css" media="screen" />
+        <script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.7.min.js" ></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/jquery.tinyscrollbar.min.js" ></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/script.js" ></script>
     </head>
-    <link rel="stylesheet" href="{{STATIC_URL}}css/style.css" type="text/css" media="screen" />
 <body>
-    {% block content %}
+    <div class="col" id="col1">
+        <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+        <div class="viewport">
+            <div class="overview">
+                {% block col1 %}
+                {% include "classList.html" %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
     
-    {% endblock %}
+    <div class="col" id="col2">
+        <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+        <div class="viewport">
+            <div class="overview">
+                {% block col2 %}
+                {% include "classDetails.html" %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="col" id="col3">
+        <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+        <div class="viewport">
+            <div class="overview">
+                {% block col3 %}
+                {% include "detail.html" %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>

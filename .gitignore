@@ -1,6 +1,6 @@
-ofSource/
 *.pyc
 doxygen/build/
 *~
 settings.py
 ofdoc
+cppSource/
