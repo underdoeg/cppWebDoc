@@ -28,7 +28,7 @@ def classFunctionDetail(request, classname="", functionname=""):
     c["classes"] = dClass.objects.all().filter(visible=True)
     c["activeClass"] = get_object_or_404(dClass, name=classname)
     c["functions"] = dClassFunction.objects.all().filter(visible=True, classRef=c["activeClass"])
-    c["activeFunction"] = get_object_or_404(dClassFunction, name=functionname, classRef=c["activeClass"])
+    c["activeClassFunction"] = get_object_or_404(dClassFunction, name=functionname, classRef=c["activeClass"])
 
     t = loader.get_template('base.html')
     rc = RequestContext(request, c)

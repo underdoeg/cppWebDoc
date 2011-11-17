@@ -34,6 +34,20 @@ a.active{
     padding-bottom: 10px;
 }
 
+.col h2{
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+    padding-top: 3px;
+}
+
+.col h3{
+    font-size: 10px;
+    margin: 0px;
+    padding: 0px;
+    padding-top: 2px;
+}
+
 /* Tiny Scrollbar */
 .col .viewport { width: 230px; height: 100%; overflow: hidden; position: relative; margin: 0px;padding: 0px;}
 .col .overview { list-style: none; position: absolute; left: 0; top: 0; padding: 10px; margin: 0; }

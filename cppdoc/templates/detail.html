@@ -1,3 +1,16 @@
 {% if activeClassFunction %}
-    
+    <h1>{{ activeClassFunction.name }}</h1>
+    <h2>parameters</h2>
+    {% for paramSet in activeClassFunction.paramSets.all %}
+        {% if paramSet.params.all|length > 1 %}
+            <h3>Version {{forloop.counter}}</h3>
+        {% endif %}
+        {% for param in paramSet.params.all%}
+            {{param.typeRef.name}}<br />
+        {% empty %}
+            takes no arguments
+        {% endfor %}
+        <h3>returns</h3>
+        {{paramSet.returnType.name}}
+    {% endfor %}
 {% endif %}
