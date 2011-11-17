@@ -1,0 +1,11 @@
+html, body{
+    font-size: 13px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.section{
+    width: 250px;
+    float: left;
+    padding: 5px;
+}
