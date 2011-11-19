@@ -1,5 +1,6 @@
 {% if activeClassFunction %}
     <h1>{{ activeClassFunction.name }}</h1>
+    <div class="description edit">{{ activeClassFunction.description|default:"no description yet, click to edit" }}</div>
     <h2>parameters</h2>
     {% for paramSet in activeClassFunction.paramSets.all %}
         {% if paramSet.params.all|length > 1 %}
