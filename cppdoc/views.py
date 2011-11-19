@@ -32,3 +32,13 @@ def classFunctionDetail(request, classname="", functionname=""):
     t = loader.get_template('base.html')
     rc = RequestContext(request, c)
     return HttpResponse(t.render(rc), content_type="application/xhtml+xml")
+    
+def classVariableDetail(request, classname="", variablename=""):
+    c = {}
+    c["classes"] = dClass.objects.all().filter(visible=True)
+    c["activeClass"] = get_object_or_404(dClass, name=classname)
+    c["activeClassVariable"] = get_object_or_404(dClassVariable, name=variablename, classRef=c["activeClass"])
+
+    t = loader.get_template('base.html')
+    rc = RequestContext(request, c)
+    return HttpResponse(t.render(rc), content_type="application/xhtml+xml")

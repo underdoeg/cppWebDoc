@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     url(r'^$', 'cppdoc.views.listClasses', name='index'),
     url(r'^class/(?P<classname>[\w\-]+)/$', 'cppdoc.views.classDetails'),
     url(r'^class/(?P<classname>[\w\-]+)/f/(?P<functionname>[\w\-]+)/$', 'cppdoc.views.classFunctionDetail'),
+    url(r'^class/(?P<classname>[\w\-]+)/v/(?P<variablename>[\w\-]+)/$', 'cppdoc.views.classVariableDetail'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

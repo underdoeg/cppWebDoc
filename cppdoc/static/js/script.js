@@ -1,7 +1,10 @@
 $(document).ready(function(){
-    $('.edit').editable('/users/dashboard/edit/{{ user.username }}/', {
-     	style: 'display: inline',
-        type: 'textarea',
-     });
+    $('div.edit').editable('/users/dashboard/edit/{{ user.username }}/', {
+     	style: 'display: inline;height: 400px',
+        type: 'textarea'
+    });
+    $('span.edit').editable('/users/dashboard/edit/{{ user.username }}/', {
+     	style: 'display: inline'
+    });
     $('.col').tinyscrollbar();
 })

@@ -8,6 +8,9 @@ from lxml import objectify
 def getType(name):
     if not name:
         name = ""
+    elif isinstance(name, objectify.ObjectifiedElement):
+        if name.find("ref") is not None:
+            name = name.find("ref").text
     typeInst, created = dType.objects.get_or_create(name=name)
     if created:
         print("NEW TYPE "+name)
@@ -59,12 +62,24 @@ def serialize_class(filename):
                         funcInst, created = dClassFunction.objects.get_or_create(name=member.name.text, classRef=classInst)
                         if created:
                             print("NEW FUNCTION "+member.name.text+" in "+classname)
-                            
+                        
+                        funcInst.accessRef = getAccess(member.get("prot"))
+                        if created and funcInst.accessRef.name == "private":
+                            funcInst.visible = False
+                        if member.get("static") == 'yes':
+                            funcInst.static = True
+                        else:
+                            funcInst.static = False
+                        if member.get("static") == 'yes':
+                            funcInst.static = True
+                        else:
+                            funcInst.static = False
+                        
                         paramTypes = []
                         if member.find('param') is not None:
                             for param in member.param:
                                 mType = param.type
-                                if mType.find("ref"):
+                                if mType.find("ref") is not None:
                                     mType = mType.ref
                                 paramTypes.append(getType(mType.text))
                         
@@ -95,11 +110,14 @@ def serialize_class(filename):
                             print("NEW PARAM SET "+str(member.argsstring.text))
                             paramSet = dFunctionParamSet(functionRef=funcInst, returnType=getType(member.get("type")))
                             paramSet.save()
-                            for i in range(0, len(paramTypes)):
-                                param = dFunctionParam(paramSetRef = paramSet, typeRef=getType(paramTypes[i]), position=i)
-                                param.save()
+                        for i in range(0, len(paramTypes)):
+                            param, created = dFunctionParam.objects.get_or_create(paramSetRef = paramSet, typeRef=getType(paramTypes[i]), position=i)
+                            if member.find('param')[i].find('declname'):
+                                param.name = member.find('param')[i].declname
+                            param.save()
                         
-                        paramSet.returnType = getType(member.get('type'))
+                        
+                        paramSet.returnType = getType(member.find('type'))
                         paramSet.save()
                         
                         #print(len(paramTypes))

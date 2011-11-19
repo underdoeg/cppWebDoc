@@ -7,4 +7,7 @@
         <a href="/class/{{activeClass.name}}/f/{{ function.name }}" class="{% if activeClassFunction.name == function.name %}active{% endif %}">{{ function.name }}</a><br />
     {% endfor %}
     <h2>members</h2>
+    {% for var in activeClass.variables.all %}
+        <a href="/class/{{activeClass.name}}/v/{{ var.name }}" class="{% if activeClassVariable.name == var.name %}active{% endif %}">{{ var.name }}</a><br />
+    {% endfor %}
 {% endif %}

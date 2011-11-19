@@ -1,17 +1,23 @@
 {% if activeClassFunction %}
     <h1>{{ activeClassFunction.name }}</h1>
     <div class="description edit">{{ activeClassFunction.description|default:"no description yet, click to edit" }}</div>
-    <h2>parameters</h2>
+    
     {% for paramSet in activeClassFunction.paramSets.all %}
-        {% if paramSet.params.all|length > 1 %}
-            <h3>Version {{forloop.counter}}</h3>
-        {% endif %}
+        <h2>{{ paramSet }}</h2>
+        <h3>parameters</h3>
         {% for param in paramSet.params.all%}
-            {{param.typeRef.name}}<br />
+            {{param.typeRef.name}} {{ param.name }} - <span class="edit">{{ activeClassFunction.description|default:"no description yet, click to edit" }}</span><br />
         {% empty %}
             takes no arguments
         {% endfor %}
         <h3>returns</h3>
         {{paramSet.returnType.name}}
     {% endfor %}
+    <h2>details</h2>
+    <div class="description edit">{{ activeClassFunction.description|default:"no description yet, click to edit" }}</div>
+{% endif %}
+
+{% if activeClassVariable %}
+    <h1>{{ activeClassVariable.typeRef.name }} {{ activeClassVariable.name }}</h1>  
+    <div class="description edit">{{ activeClassVariable.details|default:"no details yet, click to edit" }}</div>
 {% endif %}

@@ -81,7 +81,7 @@ class dVariableBase(models.Model):
 
         
 class dClassVariable(dVariableBase):
-    classRef = models.ForeignKey(dClass)
+    classRef = models.ForeignKey(dClass, related_name="variables")
     accessRef = models.ForeignKey(dAccess, blank=True, null=True)
     static = models.BooleanField(default=False)
     visible = models.BooleanField(default=True)
@@ -97,7 +97,7 @@ class dClassFunction(dFunctionBase):
     accessRef = models.ForeignKey(dAccess, blank=True, null=True)
     static = models.BooleanField(default=False)
     virtual = models.BooleanField(default=False)
-    
+
     class Meta:
         verbose_name = "Class Function"
         verbose_name_plural = "Class Functions"
@@ -115,7 +115,10 @@ class dFunctionParamSet(models.Model):
         verbose_name_plural = "Function parameter sets"
     
     def __unicode__(self):
-        return "set for "+str(self.functionRef)
+        ret = self.returnType.name+" "+str(self.functionRef.name)+"("
+       # ret += self.params.all().join(",")
+        ret += u", ".join([param.name for param in self.params.all()])
+        return ret+")"
     
 class dFunctionParam(dVariableBase):
     paramSetRef = models.ForeignKey(dFunctionParamSet, related_name="params")
