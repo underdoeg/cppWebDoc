@@ -1,6 +1,16 @@
+<script type="text/javascript">
+    $('div.edit').editable('/jeditable/dashboard/edit/{{ user.username }}/', {
+     	style: 'display: inline;height: 400px',
+        type: 'textarea'
+    });
+    $('span.edit').editable('/users/dashboard/edit/{{ user.username }}/', {
+     	style: 'display: inline'
+    });
+</script>
+{{ emptyText }}
 {% if activeClassFunction %}
     <h1>{{ activeClassFunction.name }}</h1>
-    <div class="description edit">{{ activeClassFunction.description|default:"no description yet, click to edit" }}</div>
+    <div class="description edit">{{ activeClassFunction.description|default:"" }}</div>
     
     {% for paramSet in activeClassFunction.paramSets.all %}
         <h2>{{ paramSet }}</h2>
