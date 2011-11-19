@@ -1,0 +1,8 @@
+This is an semi automated code documenting system based on doxygen and django. 
+
+# INSTALLATION
+Install django & django-grappeli
+Adjust settings.py
+Put the source code to document in a folder called cppSrc in application root
+Run cd doxygen; doxygen Doxyfile; cd ..; ./manage.py doxyparse doxygen/build
+All classes, functions and variables of your source code should now be in snyc with your database

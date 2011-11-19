@@ -2,5 +2,4 @@
 doxygen/build/
 *~
 settings.py
-ofdoc
-cppSource/
+cppSrc/
