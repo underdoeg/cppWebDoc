@@ -93,7 +93,7 @@ class dClassVariable(dVariableBase):
         return self.classRef.name+"::"+self.name
 
 class dClassFunction(dFunctionBase):
-    classRef = models.ForeignKey(dClass)
+    classRef = models.ForeignKey(dClass, related_name="functions")
     accessRef = models.ForeignKey(dAccess, blank=True, null=True)
     static = models.BooleanField(default=False)
     virtual = models.BooleanField(default=False)

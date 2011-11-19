@@ -48,6 +48,15 @@ a.active{
     padding-top: 2px;
 }
 
+.description{
+    padding: 2px;
+    color: #000;
+}
+
+.details{
+    display: none;
+}
+
 /* Tiny Scrollbar */
 .col .viewport { width: 230px; height: 100%; overflow: hidden; position: relative; margin: 0px;padding: 0px;}
 .col .overview { list-style: none; position: absolute; left: 0; top: 0; padding: 10px; margin: 0; }

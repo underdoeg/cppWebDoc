@@ -1,6 +1,10 @@
-{% if functions %}
+{% if activeClass.functions %}
     <h1>{{activeClass.name}}</h1>
-    {% for function in functions %}
+    <div class="description edit">{{ activeClass.description|default:"no description yet, click to edit" }}
+    </div>
+    <h2>functions</h2>
+    {% for function in activeClass.functions.all %}
         <a href="/class/{{activeClass.name}}/f/{{ function.name }}" class="{% if activeClassFunction.name == function.name %}active{% endif %}">{{ function.name }}</a><br />
     {% endfor %}
+    <h2>members</h2>
 {% endif %}
